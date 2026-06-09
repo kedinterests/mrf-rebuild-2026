@@ -1,0 +1,28 @@
+{
+  "color_definitions": {
+    "navy": {
+      "hex": "#0a192f",
+      "description": "Primary background color"
+    },
+    "navy_mid": {
+      "hex": "#0e2040",
+      "description": "Card gradients and dark panels"
+    },
+    "navy_light": {
+      "hex": "#1a3054",
+      "description": "Hover states and focus rings"
+    },
+    "gold": {
+      "hex": "#c5a059",
+      "description": "Primary accent color"
+    },
+    "gold_hover": {
+      "hex": "#d4b06a",
+      "description": "Gold on hover and active states"
+    },
+    "off_white": {
+      "hex": "#f8f6f1",
+      "description": "Light backgrounds and text"
+    }
+  }
+}
