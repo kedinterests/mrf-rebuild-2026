@@ -3,5 +3,6 @@
   "about_url": "https://github.com/kedinterests/mrf-rebuild-2026",
   "license_url": "https://github.com/kedinterests/mrf-rebuild-2026/blob/main/LICENSE",
   "theme_version": "1.0.0",
-  "minimum_discourse_version": "3.1.0"
+  "minimum_discourse_version": "3.1.0",
+  "component": true
 }
