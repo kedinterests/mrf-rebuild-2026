@@ -1,0 +1,133 @@
+{{! MRF Custom Footer }}
+<footer class="mrf-footer">
+  <div class="mrf-footer-content">
+    <div class="mrf-footer-section">
+      <h4>{{i18n "mrf.footer.about" default="About"}}</h4>
+      <ul>
+        <li><a href="https://www.mineralrightsforum.com/about">{{i18n "mrf.footer.about_mrf" default="About MRF"}}</a></li>
+        <li><a href="https://www.mineralrightsforum.com/guidelines">{{i18n "mrf.footer.guidelines" default="Community Guidelines"}}</a></li>
+        <li><a href="https://www.mineralrightsforum.com/privacy">{{i18n "mrf.footer.privacy" default="Privacy Policy"}}</a></li>
+      </ul>
+    </div>
+
+    <div class="mrf-footer-section">
+      <h4>{{i18n "mrf.footer.support" default="Support"}}</h4>
+      <ul>
+        <li><a href="https://www.mineralrightsforum.com/contact">{{i18n "mrf.footer.contact" default="Contact"}}</a></li>
+        <li><a href="https://www.mineralrightsforum.com/faq">{{i18n "mrf.footer.faq" default="FAQ"}}</a></li>
+        <li><a href="https://www.mineralrightsforum.com/status">{{i18n "mrf.footer.status" default="Status"}}</a></li>
+      </ul>
+    </div>
+
+    <div class="mrf-footer-cta">
+      <p>{{i18n "mrf.footer.theme_switch" default="Prefer the classic view?"}}</p>
+      <a href="#" class="mrf-theme-toggle" data-theme="default">{{i18n "mrf.footer.switch_theme" default="Switch themes"}}</a>
+    </div>
+  </div>
+
+  <div class="mrf-footer-bottom">
+    <p>© {{current-year}} Mineral Rights Forum. All rights reserved.</p>
+  </div>
+</footer>
+
+<style>
+  .mrf-footer {
+    background: #0a192f;
+    border-top: 3px solid #c5a059;
+    padding: 3rem 2rem 2rem;
+    margin-top: 4rem;
+    color: #f8f6f1;
+  }
+
+  .mrf-footer-content {
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+  }
+
+  .mrf-footer-section h4 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #c5a059;
+    margin: 0 0 1rem 0;
+  }
+
+  .mrf-footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .mrf-footer-section li {
+    margin-bottom: 0.5rem;
+  }
+
+  .mrf-footer-section a {
+    color: #f8f6f1;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+
+  .mrf-footer-section a:hover {
+    color: #c5a059;
+  }
+
+  .mrf-footer-cta {
+    text-align: center;
+  }
+
+  .mrf-footer-cta p {
+    margin: 0 0 0.75rem 0;
+    font-size: 0.9rem;
+  }
+
+  .mrf-theme-toggle {
+    color: #c5a059;
+    border: 1px solid #c5a059;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+    font-weight: 600;
+  }
+
+  .mrf-theme-toggle:hover {
+    background: #c5a059;
+    color: #0a192f;
+  }
+
+  .mrf-footer-bottom {
+    border-top: 1px solid rgba(197, 160, 89, 0.25);
+    padding-top: 1.5rem;
+    text-align: center;
+    color: #6b7280;
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 768px) {
+    .mrf-footer-content {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .mrf-footer {
+      padding: 2rem 1rem 1.5rem;
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.mrf-theme-toggle').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      // Theme switcher logic will be handled by opt-in component
+      const event = new CustomEvent('mrf:toggleTheme');
+      document.dispatchEvent(event);
+    });
+  });
+</script>

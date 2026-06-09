@@ -1,0 +1,253 @@
+// MineralRightsForum Redesign 2026 — Desktop Styles
+
+// Design Tokens
+$navy: #0a192f;
+$navy-mid: #0e2040;
+$navy-light: #1a3054;
+$gold: #c5a059;
+$gold-hover: #d4b06a;
+$gold-dim: rgba(197, 160, 89, 0.1);
+$gold-border: rgba(197, 160, 89, 0.25);
+$off-white: #f8f6f1;
+$ink: #0b0e14;
+$muted: #6b7280;
+$border-light: #e6e7ea;
+
+// Typography
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  --heading-font-family: 'Playfair Display', Georgia, serif;
+}
+
+// Header & Navigation
+.d-header {
+  border-bottom: 3px solid $gold;
+  background: $navy;
+
+  .logo-wrapper img {
+    max-height: 45px;
+  }
+
+  .panel {
+    background: $navy;
+  }
+}
+
+.d-header .panel.current-user {
+  background: $navy-light;
+  border: 1px solid $gold-border;
+  border-radius: 4px;
+}
+
+// Topic List
+.topic-list {
+  .topic-list-item {
+    border-bottom: 1px solid $border-light;
+    padding: 1rem 0;
+
+    &:hover {
+      background: rgba(10, 25, 47, 0.02);
+    }
+  }
+
+  .title {
+    font-family: var(--heading-font-family);
+    color: $navy;
+    font-weight: 600;
+    font-size: 1.125rem;
+
+    a {
+      color: $navy;
+
+      &:hover {
+        color: $gold;
+      }
+    }
+  }
+
+  .topic-excerpt {
+    color: $muted;
+    font-size: 0.95rem;
+  }
+
+  .num.posts {
+    color: $navy;
+    font-weight: 600;
+  }
+
+  .num.likes {
+    color: $gold;
+  }
+}
+
+// Tags
+.discourse-tag {
+  background: $gold-dim;
+  color: $navy;
+  border: 1px solid $gold-border;
+  border-radius: 3px;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+
+  &:hover {
+    background: $gold-dim;
+    color: $gold;
+    border-color: $gold;
+  }
+}
+
+// Buttons
+.btn-primary,
+.btn.btn-primary {
+  background: $gold;
+  color: $navy;
+  border: 1px solid $gold;
+  font-weight: 600;
+
+  &:hover {
+    background: $gold-hover;
+    border-color: $gold-hover;
+    color: $navy;
+  }
+}
+
+.btn-default,
+.btn.btn-default {
+  border: 1px solid $gold-border;
+  color: $navy;
+
+  &:hover {
+    background: $gold-dim;
+    border-color: $gold;
+  }
+}
+
+// Navigation Pills
+.nav-pills {
+  > li {
+    margin-right: 0.5rem;
+
+    > a {
+      color: $navy;
+      background: transparent;
+      border: 1px solid $gold-border;
+      border-radius: 3px;
+      padding: 0.5rem 0.75rem;
+      font-weight: 600;
+
+      &:hover {
+        background: $gold-dim;
+        border-color: $gold;
+        color: $gold;
+      }
+    }
+
+    &.active > a {
+      background: $gold;
+      color: $navy;
+      border-color: $gold;
+    }
+  }
+}
+
+// Categories
+.category-link {
+  color: $navy;
+  font-weight: 600;
+
+  &:hover {
+    color: $gold;
+  }
+}
+
+.category-box {
+  border: 1px solid $border-light;
+  border-top: 3px solid $gold;
+
+  .category-box-heading {
+    color: $navy;
+    font-family: var(--heading-font-family);
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+}
+
+// Posts
+.post {
+  border: 1px solid $border-light;
+
+  &.reply {
+    background: #fafaf9;
+  }
+}
+
+.post-content {
+  color: $ink;
+  line-height: 1.65;
+
+  a {
+    color: $gold;
+
+    &:hover {
+      color: $gold-hover;
+    }
+  }
+}
+
+.topic-avatar {
+  .avatar {
+    border: 2px solid $gold-border;
+  }
+}
+
+// Forms
+.form-control {
+  border: 1px solid $border-light;
+  color: $ink;
+
+  &:focus {
+    border-color: $gold;
+    outline: none;
+    box-shadow: 0 0 0 3px $gold-dim;
+  }
+}
+
+// Breadcrumbs
+.breadcrumb {
+  a {
+    color: $gold;
+
+    &:hover {
+      color: $gold-hover;
+    }
+  }
+}
+
+// Meta Information
+.post-info {
+  color: $muted;
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.topic-meta-data {
+  color: $muted;
+}
+
+// Footer (styled in common/footer.hbs)
+.d-footer {
+  background: $navy;
+  color: $off-white;
+  border-top: 3px solid $gold;
+
+  a {
+    color: $gold;
+
+    &:hover {
+      color: $gold-hover;
+    }
+  }
+}

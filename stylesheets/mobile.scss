@@ -1,0 +1,106 @@
+// MineralRightsForum Redesign 2026 — Mobile Styles
+
+// Design Tokens
+$navy: #0a192f;
+$navy-light: #1a3054;
+$gold: #c5a059;
+$gold-hover: #d4b06a;
+$gold-dim: rgba(197, 160, 89, 0.1);
+$gold-border: rgba(197, 160, 89, 0.25);
+$muted: #6b7280;
+$border-light: #e6e7ea;
+
+@media (max-width: 768px) {
+  // Header adjustments
+  .d-header {
+    .logo-wrapper img {
+      max-height: 40px;
+    }
+
+    .hamburger-panel {
+      border-top: 1px solid $gold-border;
+    }
+  }
+
+  // Topic list mobile spacing
+  .topic-list {
+    .topic-list-item {
+      padding: 0.75rem 0;
+
+      .topic-title {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  // Simplified tag display
+  .discourse-tag {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.4rem;
+  }
+
+  // Full-width buttons on mobile
+  .btn-primary,
+  .btn-default {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+
+  // Navigation pills stack vertically
+  .nav-pills {
+    display: flex;
+    flex-direction: column;
+
+    > li {
+      margin-right: 0;
+      margin-bottom: 0.5rem;
+
+      > a {
+        width: 100%;
+      }
+    }
+  }
+
+  // Reduce padding on posts
+  .post {
+    padding: 0.75rem;
+  }
+
+  // Hero banner adjusts
+  .mrf-hero-banner {
+    padding: 2rem 1rem;
+
+    h2 {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .d-header {
+    .logo-wrapper img {
+      max-height: 36px;
+    }
+  }
+
+  .topic-list .title {
+    font-size: 1rem;
+  }
+
+  .mrf-hero-banner {
+    padding: 1.5rem 1rem;
+
+    h2 {
+      font-size: 1.25rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+    }
+  }
+
+  // Stack category boxes
+  .category-box {
+    margin-bottom: 1rem;
+  }
+}
