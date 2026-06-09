@@ -21,20 +21,22 @@ See `docs/DESIGN_TOKENS.md` for complete color, typography, and spacing specific
 
 ```
 mrf-rebuild-2026/
-├── theme.json                      # Theme metadata & color schemes
+├── about.json                      # Discourse component metadata (required)
+├── settings.json                   # Color definitions for admin settings
 ├── stylesheets/
 │   ├── desktop.scss               # Desktop styles (colors, typography, components)
 │   └── mobile.scss                # Mobile-specific adjustments
 ├── common/
+│   ├── opt-in-banner.hbs          # Phase 1 opt-in switcher banner
 │   ├── header.hbs                 # Hero banner (Playfair Display heading + subtitle)
 │   └── footer.hbs                 # Custom footer with theme switcher
 ├── assets/
 │   └── images/
-│       └── mrf-strata-logo.svg   # Strata logo (4 gold bars)
+│       └── mrf-strata-logo.svg   # Strata logo (4 gold bars) — add after export
 └── docs/
-    ├── DESIGN_TOKENS.md           # Design system reference
+    ├── DESIGN_TOKENS.md           # Design system reference (colors, typography, spacing)
     ├── mrf-redesign-proposal.md   # Original proposal (Phase 1–3 transition plan)
-    └── IMPLEMENTATION.md          # Step-by-step build checklist (TBD)
+    └── IMPLEMENTATION.md          # Step-by-step Discourse deployment guide
 ```
 
 ## Implementation Phases
@@ -66,11 +68,13 @@ To test this theme component:
 
 ## Key Files
 
-- **Color Scheme**: Defined in `theme.json` (`MRF Navy & Gold`)
+- **Component Metadata**: `about.json` (required for Discourse import)
+- **Color Definitions**: `settings.json` (accessible in Discourse admin)
 - **Desktop Styles**: `stylesheets/desktop.scss` (~150 lines)
 - **Mobile Styles**: `stylesheets/mobile.scss` (~80 lines)
-- **Hero Banner**: `common/header.hbs` with inline styles
-- **Footer**: `common/footer.hbs` with theme switcher event dispatcher
+- **Opt-in Banner**: `common/opt-in-banner.hbs` with localStorage + preview_theme_id
+- **Hero Banner**: `common/header.hbs` with Playfair Display heading
+- **Footer**: `common/footer.hbs` with theme switcher
 - **Design Reference**: `docs/DESIGN_TOKENS.md`
 
 ## Next Steps
