@@ -1,0 +1,290 @@
+{{! MRF Opt-in Banner — Phase 1 theme switcher }}
+{{#if showOptInBanner}}
+<div class="mrf-opt-in-banner" id="mrfOptInBanner">
+  <div class="mrf-opt-in-content">
+    <div class="mrf-opt-in-message">
+      <h3>{{i18n "mrf.optin.headline" default="The new Mineral Rights Forum is here"}}</h3>
+      <p>{{i18n "mrf.optin.subtitle" default="Try the redesigned forum with our fresh navy and gold look"}}</p>
+    </div>
+
+    <div class="mrf-opt-in-actions">
+      <button class="btn btn-primary mrf-try-now" data-action="enable-new-theme">
+        {{i18n "mrf.optin.try_now" default="Try it now"}}
+      </button>
+      <button class="btn btn-default mrf-dismiss" data-action="dismiss-banner">
+        {{i18n "mrf.optin.dismiss" default="Later"}}
+      </button>
+    </div>
+  </div>
+
+  <button class="mrf-close-banner" aria-label="Close" data-action="dismiss-banner">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 5L5 15M5 5l10 10"></path>
+    </svg>
+  </button>
+</div>
+{{/if}}
+
+<style>
+  .mrf-opt-in-banner {
+    background: linear-gradient(135deg, #0e2040 0%, #0a192f 100%);
+    border-bottom: 3px solid #c5a059;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    position: relative;
+    animation: slideDown 0.3s ease-out;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .mrf-opt-in-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .mrf-opt-in-message {
+    flex: 1;
+  }
+
+  .mrf-opt-in-message h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: #f8f6f1;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .mrf-opt-in-message p {
+    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.95rem;
+    color: #c5a059;
+    margin: 0;
+  }
+
+  .mrf-opt-in-actions {
+    display: flex;
+    gap: 1rem;
+    flex-shrink: 0;
+  }
+
+  .mrf-opt-in-actions .btn {
+    white-space: nowrap;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+
+  .mrf-opt-in-actions .btn-primary {
+    background: #c5a059;
+    color: #0a192f;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .mrf-opt-in-actions .btn-primary:hover {
+    background: #d4b06a;
+  }
+
+  .mrf-opt-in-actions .btn-default {
+    background: transparent;
+    color: #f8f6f1;
+    border: 1px solid #c5a059;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .mrf-opt-in-actions .btn-default:hover {
+    background: rgba(197, 160, 89, 0.1);
+    border-color: #d4b06a;
+  }
+
+  .mrf-close-banner {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    background: transparent;
+    border: none;
+    color: #c5a059;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+  }
+
+  .mrf-close-banner:hover {
+    color: #d4b06a;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .mrf-opt-in-banner {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem 1rem;
+      gap: 1rem;
+    }
+
+    .mrf-opt-in-content {
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .mrf-opt-in-message h3 {
+      font-size: 1.125rem;
+    }
+
+    .mrf-opt-in-message p {
+      font-size: 0.875rem;
+    }
+
+    .mrf-opt-in-actions {
+      width: 100%;
+      flex-direction: column;
+    }
+
+    .mrf-opt-in-actions .btn {
+      width: 100%;
+    }
+
+    .mrf-close-banner {
+      position: static;
+      align-self: flex-end;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    const BANNER_DISMISSED_KEY = 'mrf-banner-dismissed';
+    const THEME_PREFERENCE_KEY = 'mrf-theme-preference';
+
+    // Helper: Get current theme ID
+    function getCurrentThemeId() {
+      // In Discourse, this would be dynamically set by the theme system
+      return document.body.dataset.currentThemeId || 1;
+    }
+
+    // Helper: Get new theme ID
+    function getNewThemeId() {
+      // This would be the ID of the new "MRF Navy & Gold" theme
+      // In production, this should be injected from Discourse admin settings
+      return document.body.dataset.newThemeId || 2;
+    }
+
+    // Initialize banner visibility
+    function initBanner() {
+      const dismissed = localStorage.getItem(BANNER_DISMISSED_KEY);
+      if (!dismissed) {
+        // Show banner on page load
+        const banner = document.getElementById('mrfOptInBanner');
+        if (banner) {
+          banner.style.display = 'block';
+        }
+      }
+    }
+
+    // Handle "Try it now" click
+    document.addEventListener('click', function(e) {
+      if (e.target.closest('[data-action="enable-new-theme"]')) {
+        e.preventDefault();
+        enableNewTheme();
+      }
+    });
+
+    // Handle "Later" / close click
+    document.addEventListener('click', function(e) {
+      if (e.target.closest('[data-action="dismiss-banner"]') ||
+          e.target.closest('.mrf-close-banner')) {
+        e.preventDefault();
+        dismissBanner();
+      }
+    });
+
+    function enableNewTheme() {
+      const newThemeId = getNewThemeId();
+
+      // For logged-in users: change theme preference via Discourse API
+      if (window.Discourse && window.Discourse.User) {
+        fetch(`/user-api-key/new`, {
+          method: 'POST',
+          headers: { 'X-CSRF-Token': getCsrfToken() },
+          body: JSON.stringify({
+            application_name: 'MRF Theme Switcher',
+            scopes: ['read', 'write']
+          })
+        }).then(() => {
+          // Reload with new theme
+          window.location.href = `/?preview_theme_id=${newThemeId}`;
+        });
+      } else {
+        // For logged-out users: use localStorage + preview_theme_id
+        localStorage.setItem(THEME_PREFERENCE_KEY, newThemeId);
+        window.location.href = `/?preview_theme_id=${newThemeId}`;
+      }
+    }
+
+    function dismissBanner() {
+      localStorage.setItem(BANNER_DISMISSED_KEY, 'true');
+      const banner = document.getElementById('mrfOptInBanner');
+      if (banner) {
+        banner.style.animation = 'slideUp 0.3s ease-out forwards';
+        setTimeout(() => {
+          banner.remove();
+        }, 300);
+      }
+    }
+
+    // Helper: Get CSRF token
+    function getCsrfToken() {
+      const meta = document.querySelector('meta[name="csrf-token"]');
+      return meta ? meta.getAttribute('content') : '';
+    }
+
+    // Initialize on page load
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initBanner);
+    } else {
+      initBanner();
+    }
+
+    // Listen for manual theme toggle events (from footer)
+    document.addEventListener('mrf:toggleTheme', function() {
+      const pref = localStorage.getItem(THEME_PREFERENCE_KEY);
+      const currentTheme = getCurrentThemeId();
+      const newTheme = getNewThemeId();
+      const targetTheme = pref === String(newTheme) ? currentTheme : newTheme;
+
+      localStorage.setItem(THEME_PREFERENCE_KEY, targetTheme);
+      window.location.href = `/?preview_theme_id=${targetTheme}`;
+    });
+  })();
+
+  @keyframes slideUp {
+    to {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+  }
+</script>
