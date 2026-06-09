@@ -339,3 +339,274 @@ $border-light: #e6e7ea;
     margin-bottom: 1rem;
   }
 }
+
+// Hero Banner
+.mrf-hero-banner {
+  background: linear-gradient(135deg, $navy-mid 0%, $navy 100%);
+  border-bottom: 3px solid $gold;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.mrf-hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.mrf-hero-banner h2 {
+  font-family: var(--heading-font-family);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 700;
+  color: $off-white;
+  margin: 0 0 1rem 0;
+}
+
+.mrf-hero-banner p {
+  font-size: 1.125rem;
+  color: $gold;
+  margin: 0;
+  font-weight: 400;
+}
+
+// Custom Footer
+.mrf-footer {
+  background: $navy;
+  border-top: 3px solid $gold;
+  padding: 3rem 2rem 2rem;
+  margin-top: 4rem;
+  color: $off-white;
+}
+
+.mrf-footer-content {
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.mrf-footer-section h4 {
+  font-family: var(--heading-font-family);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: $gold;
+  margin: 0 0 1rem 0;
+}
+
+.mrf-footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mrf-footer-section li {
+  margin-bottom: 0.5rem;
+}
+
+.mrf-footer-section a {
+  color: $off-white;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+
+  &:hover {
+    color: $gold;
+  }
+}
+
+.mrf-footer-cta {
+  text-align: center;
+}
+
+.mrf-footer-cta p {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.9rem;
+}
+
+.mrf-theme-toggle {
+  color: $gold;
+  border: 1px solid $gold;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s;
+  font-weight: 600;
+
+  &:hover {
+    background: $gold;
+    color: $navy;
+  }
+}
+
+.mrf-footer-bottom {
+  border-top: 1px solid $gold-border;
+  padding-top: 1.5rem;
+  text-align: center;
+  color: $muted;
+  font-size: 0.85rem;
+}
+
+// Opt-in Banner
+.mrf-opt-in-banner {
+  background: linear-gradient(135deg, $navy-mid 0%, $navy 100%);
+  border-bottom: 3px solid $gold;
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  position: relative;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mrf-opt-in-content {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.mrf-opt-in-message {
+  flex: 1;
+}
+
+.mrf-opt-in-message h3 {
+  font-family: var(--heading-font-family);
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: $off-white;
+  margin: 0 0 0.5rem 0;
+}
+
+.mrf-opt-in-message p {
+  font-size: 0.95rem;
+  color: $gold;
+  margin: 0;
+}
+
+.mrf-opt-in-actions {
+  display: flex;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.mrf-opt-in-actions .btn {
+  white-space: nowrap;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.mrf-opt-in-actions .btn-primary {
+  background: $gold;
+  color: $navy;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background: $gold-hover;
+  }
+}
+
+.mrf-opt-in-actions .btn-default {
+  background: transparent;
+  color: $off-white;
+  border: 1px solid $gold;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background: $gold-dim;
+    border-color: $gold-hover;
+  }
+}
+
+.mrf-close-banner {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  background: transparent;
+  border: none;
+  color: $gold;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+
+  &:hover {
+    color: $gold-hover;
+  }
+}
+
+@media (max-width: 768px) {
+  .mrf-opt-in-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem 1rem;
+    gap: 1rem;
+  }
+
+  .mrf-opt-in-content {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .mrf-opt-in-message h3 {
+    font-size: 1.125rem;
+  }
+
+  .mrf-opt-in-message p {
+    font-size: 0.875rem;
+  }
+
+  .mrf-opt-in-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .mrf-opt-in-actions .btn {
+    width: 100%;
+  }
+
+  .mrf-close-banner {
+    position: static;
+    align-self: flex-end;
+  }
+
+  .mrf-footer-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .mrf-footer {
+    padding: 2rem 1rem 1.5rem;
+  }
+
+  .mrf-hero-banner {
+    padding: 2rem 1rem;
+
+    h2 {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+    }
+  }
+}
